@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      main {
+        margin-top: 100px;
+        text-align: center;
+      }
+      .button {
+        display: inline-block;
+        background-color: burlywood;
+        color: darkblue;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: move;
+        box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
+      }
+      .button:visited {
+        color: darkblue;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Drag to bookmarks</h1>
+      <a class="button" href="">Copy PR Notes</a>
+    </main>
+    <script>
+      const codeLink = `${window.location.href}/code.js`;
+
+      fetch(codeLink)
+        .then((v) => v.text())
+        .then((code) => {
+          document
+            .querySelector(".button")
+            .setAttribute("href", `javascript:${code}`);
+        });
+    </script>
+  </body>
+</html>
